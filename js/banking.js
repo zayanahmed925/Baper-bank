@@ -1,8 +1,21 @@
-document.getElementById('deposite-button').addEventListener('click', function () {
-    // input Diposit
-    const inputDiposit = document.getElementById('input-diposit');
+
+function getInputValue(inputId) {
+    const inputDiposit = document.getElementById(inputId);
     const getDipositText = inputDiposit.value;
     const getDipositAmount = parseFloat(getDipositText);
+    // Clear diposit Input Field
+    inputDiposit.value = "";
+    return getDipositAmount;
+}
+
+
+
+document.getElementById('deposite-button').addEventListener('click', function () {
+    const getDipositAmount = getInputValue('input-diposit');
+    // input Diposit
+    // const inputDiposit = document.getElementById('input-diposit');
+    // const getDipositText = inputDiposit.value;
+    // const getDipositAmount = parseFloat(getDipositText);
     //  diposit Show Area
     const dipositArea = document.getElementById('diposit-area');
     const previousAmout = parseFloat(dipositArea.innerText);
@@ -13,15 +26,15 @@ document.getElementById('deposite-button').addEventListener('click', function ()
     const previousBalance = parseFloat(balanceArea.innerText);
     const totalBalance = getDipositAmount + previousBalance;
     balanceArea.innerText = totalBalance;
-    // Clear diposit Input Field
-    inputDiposit.value = "";
+
 })
 //Input Withdraw 
 document.getElementById('withdrow-button').addEventListener('click', function () {
-    const inputWithdraw = document.getElementById('input-withdraw');
-    const getWithdrawText = inputWithdraw.value;
-    const getWithdrawAmount = parseFloat(getWithdrawText);
-    console.log(getWithdrawAmount);
+
+    const getWithdrawAmount = getInputValue('input-withdraw');
+    // const inputWithdraw = document.getElementById('input-withdraw');
+    // const getWithdrawText = inputWithdraw.value;
+    // const getWithdrawAmount = parseFloat(getWithdrawText);
 
     //  Withdraw show area
     const WithdrawArea = document.getElementById('withdrow-area');

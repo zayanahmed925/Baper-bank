@@ -1,53 +1,49 @@
-
-function getInputValue(inputId) {
-    const inputDiposit = document.getElementById(inputId);
-    const getDipositText = inputDiposit.value;
-    const getDipositAmount = parseFloat(getDipositText);
-    // Clear diposit Input Field
-    inputDiposit.value = "";
-    return getDipositAmount;
-}
-
-
-
 document.getElementById('deposite-button').addEventListener('click', function () {
-    const getDipositAmount = getInputValue('input-diposit');
-    // input Diposit
-    // const inputDiposit = document.getElementById('input-diposit');
-    // const getDipositText = inputDiposit.value;
-    // const getDipositAmount = parseFloat(getDipositText);
-    //  diposit Show Area
+    const inputDiposit = document.getElementById('input-diposit');
+    const InputDipositText = inputDiposit.value;
+    const getInputAmount = parseInt(InputDipositText);
+    //deposit Display
     const dipositArea = document.getElementById('diposit-area');
-    const previousAmout = parseFloat(dipositArea.innerText);
-    const updateAmount = previousAmout + getDipositAmount;
-    dipositArea.innerText = updateAmount;
-    // Total Balance Show area
-    const balanceArea = document.getElementById('total-balance');
-    const previousBalance = parseFloat(balanceArea.innerText);
-    const totalBalance = getDipositAmount + previousBalance;
-    balanceArea.innerText = totalBalance;
+    const dipositAreaText = dipositArea.innerText;
+    const dipositAreaAmount = parseInt(dipositAreaText);
+    //deposit Amount Add
+    const dipositUpdateAmount = getInputAmount + dipositAreaAmount;
+    dipositArea.innerText = dipositUpdateAmount;
 
+    // total balance show after deposit
+    const totalBalance = document.getElementById('total-balance');
+    const totalBanlanceText = totalBalance.innerText;
+    const totalPreviousbalance = parseInt(totalBanlanceText);
+    const totalUpdateBalance = totalPreviousbalance + getInputAmount;
+    totalBalance.innerText = totalUpdateBalance;
+
+    // clear deposit input
+    inputDiposit.value = '';
 })
-//Input Withdraw 
+//Withdrow Balance
 document.getElementById('withdrow-button').addEventListener('click', function () {
+    const inputWithdraw = document.getElementById('input-withdraw');
+    const inputWithdrawText = inputWithdraw.value;
+    const inputWithdrawAmount = parseInt(inputWithdrawText);
 
-    const getWithdrawAmount = getInputValue('input-withdraw');
-    // const inputWithdraw = document.getElementById('input-withdraw');
-    // const getWithdrawText = inputWithdraw.value;
-    // const getWithdrawAmount = parseFloat(getWithdrawText);
+    // withdrow Display
+    const withdrowArea = document.getElementById('withdrow-area');
+    const withdrawAreaText = withdrowArea.innerText;
+    const withdrawAreaAmount = parseInt(withdrawAreaText);
+    //add for withdrow
+    const withdrawUpdateAmount = inputWithdrawAmount + withdrawAreaAmount;
+    withdrowArea.innerText = withdrawUpdateAmount;
+    //total Balance show after Withdraw
+    const totalWithdrow = document.getElementById('total-balance');
+    const totalWithdrowBalanceText = totalWithdrow.innerText;
+    const totalWithdrawAmont = parseInt(totalWithdrowBalanceText);
+    const totalWithdrowUpdate = totalWithdrawAmont - inputWithdrawAmount;
+    totalWithdrow.innerText = totalWithdrowUpdate;
+    // console.log(totalWithdrowUpdate);
 
-    //  Withdraw show area
-    const WithdrawArea = document.getElementById('withdrow-area');
-    const previousWithdrow = parseFloat(WithdrawArea.innerText);
-    const updateWithdrow = previousWithdrow + getWithdrawAmount;
-    WithdrawArea.innerText = updateWithdrow;
 
-    //Total After Withdraw
-    const balanceTotal = document.getElementById('total-balance');
-    const previousBalanceAmount = parseFloat(balanceTotal.innerText);
-    const updateBalance = previousBalanceAmount - getWithdrawAmount;
-    balanceTotal.innerText = updateBalance;
-    // Clear withdraw Input Field
-    inputWithdraw.value = "";
+    // const totalBalanceAfterWithdraw = totalUpdateBalance - inputWithdrawAmount;
+    // totalWithdrowBalance.innerText = totalBalanceAfterWithdraw;
+    // clear deposit input
+    inputWithdraw.value = '';
 })
-
